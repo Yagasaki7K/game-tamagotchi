@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import TamaDetails from './components/TamaDetails'
 
 import stayalive from './assets/stayalive.gif';
@@ -9,9 +9,8 @@ import './App.css'
 
 function App() {
 
-    const [lifeTama, setLifeTama] = useState(0)
+    const [lifeTama, setLifeTama] = useState(100)
     const [hungerTama, setHungerTama] = useState(100)
-    const [sleepTama, setSleepTama] = useState(false)
     const [ageTama, setAgeTama] = useState(0)
 
     const [isAlive, setIsAlive] = useState(true)
@@ -22,65 +21,102 @@ function App() {
     const [statsTama, setStatsTama] = useState('bem!');
 
     const [avatar, setAvatar] = useState(stayalive);
-    
 
-    if (isAlive != true) {
-        setAvatar(crying);
-    }
-
-    if (lifeTama <= 0) {
-        setIsAlive(false);
-    }
-
-    // Condition of Hunger
-    if (hungerTama > 1 && hungerTama < 35 ) {
+    function TamaIsHungred() {
         if (isEating === false) {
-            setTimeout(function(){
-                setAvatar(crying);
-                setStatsTama('com fome!')
+            setHungerTama(hungerTama - 10)
+            
+            if (hungerTama < 50) {
+                setStatsTama('com fome')
+                setIsHappy(false)
+                setAvatar(crying)
                 setLifeTama(lifeTama - 10)
-        }, 2000);
-        }   
-    }
-
-    if (hungerTama > 50) {
-        setTimeout(function(){
-        setAvatar(stayalive);
-        setStatsTama('bem!')
-        }, 1000);
-    }
-
-    if (hungerTama > 1) {
-        if (isEating === false) {
-            setTimeout(function(){
-                setHungerTama(hungerTama - 1)
-        }, 5000);
+            }
+        } else {
+            setHungerTama(hungerTama + 10)
+            setIsEating(true)
+            setIsHappy(true)
+            setAvatar(stayalive)
         }
     }
 
-    function eatingTamagotchi() {
-        setHungerTama(hungerTama + 25)
+    function TamaIsEating() {
         setIsEating(true)
+        setHungerTama(hungerTama + 40)
+        setStatsTama('comendo')
+        sleep(10000)
+        setIsEating(false)
+        setIsHappy(true)
+    }
 
-        if (hungerTama === 100) {
-            setIsEating(false)
+    function TamaIsBoring() {
+        if (isHappy === false) {
+            setStatsTama('entediado')
+
+            setInterval(() => {
+                setLifeTama(lifeTama - 10)
+            }, 2000)
         }
-        
-        setTimeout(function(){
-            setIsEating(false)
-        }, 10000)
     }
 
-    // Condition of Life
-    
-    if (lifeTama === 0) {
-        console.log('Dead')
+    function TamaIsPlaying() {
+        setIsHappy(true)
+        setStatsTama('brincando')
+        setHungerTama(hungerTama - 25)
+        setIsPlaying(true)
+        sleep(10000)
+        setIsPlaying(false)
     }
 
-    if (lifeTama === 40) {
-        setIsHappy(false);
+    function TamaIsDepressive() {
+        setIsHappy(false)
+        setStatsTama('depressivo')
+        setHungerTama(hungerTama - 50)
     }
-    
+
+    function TamaIsSleeping() {
+        setIsSleeping(true)
+        setStatsTama('dormindo')
+        sleep(10000)
+        setIsSleeping(false)
+        setStatsTama('descansado!')
+        setHungerTama(hungerTama - 15)
+    }
+
+    function lifeGraduateDown() {
+        setHungerTama(hungerTama - 1)
+
+        if (lifeTama <= 75) {
+            TamaIsHungred();
+            isEating(false)
+        }
+
+        if (lifeTama <= 50) {
+            TamaIsBoring();
+        }
+
+        if (lifeTama <= 25) {
+            TamaIsDepressive();
+        }
+
+        if (lifeTama === 0) {
+            setIsAlive(false)
+            setAvatar(dead)
+        }
+    }
+
+    function gameRunning() {
+        setInterval(function() {
+            lifeGraduateDown();
+        }, 2000);
+        setInterval(function() {
+            setStatsTama('comemorando seu aniversário')
+            setAgeTama(ageTama + 1)
+        }, 600*1000);
+    }
+
+    gameRunning()
+
     return (
         <div className="App">
             <header className="App-header">
@@ -98,10 +134,9 @@ function App() {
                         <p>Idade: {ageTama} anos</p>
                     </div>
                     <div className="buttons">
-                        <button onClick={eatingTamagotchi}>Comer</button>
-                        <button>Dormir</button>
-                        <button>Jogar</button>
-                        <button>Limpar</button>
+                        <button onClick={TamaIsEating}>Comer</button>
+                        <button onClick={TamaIsSleeping}>Dormir</button>
+                        <button onClick={TamaIsPlaying}>Jogar</button>
                     </div>
                 </div>
 
