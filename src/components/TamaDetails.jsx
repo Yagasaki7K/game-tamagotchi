@@ -1,31 +1,55 @@
 import styled from 'styled-components';
 
-const TamaDetails = styled.div`
-    .console {
-        font-size: 18px;
-    }
+const FeedButton = styled.button`
+  background-color: #8BC34A;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+`;
 
-    .life {
-        display: flex;
-        
-        p {
-            margin-right: 50px;
-            font-size: 25px;
-        }
-    }
+const PlayButton = styled.button`
+  background-color: #2196F3;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+`;
 
-    button {
-        margin-right: 20px;
-        font-size: 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        
-        :hover {
-            transition: 0.5s;
-            background: #969696;
-        }
-    }
-`
-
-export default TamaDetails
+const SleepButton = styled.button`
+  background-color: #9E9E9E;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+`;
