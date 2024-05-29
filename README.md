@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://github.com/Yagasaki7K/game-tamagotchi/assets/23272064/faecb952-bbca-4c29-8774-e2efea74f5c1" width="200"/>
+   <img src="https://github.com/Yagasaki7K/game-tamagotchi/assets/23272064/11c70560-a807-4214-b57b-c87bb58d53e5" width="200"/>
 </p>
 
 <p align="center">
