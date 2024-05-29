@@ -4,13 +4,15 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "vercel": "vite build",
     "preview": "vite preview",
-    "yagasaki": "yarn upgrade-interactive --latest"
+    "yagasaki": "yarn upgrade-interactive --latest",
+    "commit": "bun update && bun run vercel && read -p 'Descriptions Commit: ' message && git add . && echo -n \"$message - \" && node getTime.js | xargs -I {} git commit -m \"$message - {}\" && git push"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sonner": "^1.4.41",
     "styled-components": "^5.3.10"
   },
   "devDependencies": {
