@@ -12,7 +12,7 @@ export default function Tamagotchi() {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setHunger((prevHunger) => Math.max(prevHunger - 5, 0));
+            setHunger((prevHunger) => Math.max(prevHunger - 3, 0));
             setHappiness((prevHappiness) => Math.max(prevHappiness - 3, 0));
             setEnergy((prevEnergy) => Math.max(prevEnergy - 2, 0));
             setStudy((prevStudy) => Math.max(prevStudy - 1, 0));
@@ -46,7 +46,7 @@ export default function Tamagotchi() {
         }
 
         if (hunger === 70) {
-            toast.warning('Tamagotchi está satisfeito, ele pode passar mal');
+            toast.warning('Tamagotchi está satisfeito, ele pode passar mal!');
         }
 
         if (hunger >= 90) {
@@ -107,12 +107,11 @@ export default function Tamagotchi() {
                 setNoteColor("#e10065");
                 break;
         }
-
-
-    }, [energy, happiness, hunger]);
+    }, [energy, happiness, hunger, study]);
 
     function feed() {
         setHunger((prevHunger) => Math.min(prevHunger + 10, 100));
+        setEnergy((prevEnergy) => Math.max(prevEnergy - 2, 0));
         toast.success('Alimentado!');
     }
 
@@ -129,12 +128,13 @@ export default function Tamagotchi() {
 
     function studying() {
         setStudy((prevStudy) => Math.min(prevStudy + 10, 100));
+        setEnergy((prevEnergy) => Math.max(prevEnergy - 5, 0));
         toast.success('Estudando ...!');
     }
 
     return (
         <Container>
-            <h1>Tamagotchi</h1>
+            <h1>Splash</h1>
             <img src="0.gif" />
 
             <div className="flex">
