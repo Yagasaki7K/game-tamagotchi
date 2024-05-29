@@ -134,7 +134,7 @@ export default function Tamagotchi() {
 
     return (
         <Container>
-            <h1>Splash</h1>
+            <img src="logotipo.png" />
             <img src="0.gif" />
 
             <div className="flex">
@@ -142,6 +142,7 @@ export default function Tamagotchi() {
                 {/* <p>Idade: {age}</p>
                 <p>Sexo: {gender}</p> */}
             </div>
+
             <div className="flex">
                 <p>Fome: {hunger}</p>
                 <p>Felicidade: {happiness}</p>
