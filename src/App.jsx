@@ -30,7 +30,12 @@ export default function Tamagotchi() {
 
     useEffect(() => {
         if (energy <= 0 && happiness <= 20 && hunger <= 20) {
-            toast.error('Seu tamagotchi morreu!');
+            toast.error('@#$%$$&#$&%$W@@!');
+            alert('Seu tamagotchi morreu!');
+            setHappiness(50);
+            setHunger(50);
+            setEnergy(50);
+            setStudy(50);
         }
 
         if (energy <= 0) {
