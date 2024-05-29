@@ -36,6 +36,13 @@ export default function Tamagotchi() {
             setHunger(50);
             setEnergy(50);
             setStudy(50);
+
+            localStorage.removeItem('hunger');
+            localStorage.removeItem('happiness');
+            localStorage.removeItem('energy');
+            localStorage.removeItem('study');
+
+            toast.success('Reiniciando ..')
         }
 
         if (energy <= 0) {
