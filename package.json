@@ -10,15 +10,15 @@
     "commit": "bun update && bun run vercel && read -p 'Descriptions Commit: ' message && git add . && echo -n \"$message - \" && node getTime.js | xargs -I {} git commit -m \"$message - {}\" && git push"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sonner": "^1.4.41",
-    "styled-components": "^5.3.10"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sonner": "^1.7.4",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@types/react": "^18.0.38",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^4.0.0",
-    "vite": "^4.3.1"
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^4.5.14"
   }
 }
